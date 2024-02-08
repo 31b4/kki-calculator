@@ -16,8 +16,8 @@ function removeInput() {
 
 function GenNewInput(){
 
-    var subjectInput = document.createElement("input");
-    subjectInput.value = "Subject "+idx
+    //var subjectInput = document.createElement("input");
+    //subjectInput.value = "Subject "+idx
 
 
     var gradeText = document.createTextNode(" Grade: ");
@@ -43,7 +43,7 @@ function GenNewInput(){
     var containerDiv = document.createElement("div");
     
     containerDiv.id =idx+"div"
-    containerDiv.appendChild(subjectInput)
+    //containerDiv.appendChild(subjectInput)
     containerDiv.appendChild(gradeText);
     containerDiv.appendChild(gradeInput);
     containerDiv.appendChild(creditText);
@@ -151,10 +151,6 @@ function CalculateCompletedCredit(jegyek_kreditek) {
 
 function CalculateKI(jegyek_kreditek) {
     var summaTeljesitetKreditXerdemjegy = 0
-    var teljesitettKredit = 0
-    var vallaltKredit = 0
-
-
     jegyek_kreditek.forEach(element => {
         jegy = parseInt(element[0])
         kredit = parseInt(element[1])
