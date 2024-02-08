@@ -4,6 +4,8 @@ document.addEventListener('DOMContentLoaded', function() {
     GenNewInput(); 
     GenNewInput(); 
     GenNewInput(); 
+    GenNewInput(); 
+    GenNewInput(); 
 });
 
 
@@ -14,8 +16,11 @@ function removeInput() {
 
 function GenNewInput(){
 
-    
-    var gradeText = document.createTextNode("Grade: ");
+    var subjectInput = document.createElement("input");
+    subjectInput.value = "Subject "+idx
+
+
+    var gradeText = document.createTextNode(" Grade: ");
     var gradeInput = document.createElement("input");
     gradeInput.setAttribute("type", "number");
     gradeInput.value = 1
@@ -36,7 +41,9 @@ function GenNewInput(){
 
     // Create container div to hold the new elements
     var containerDiv = document.createElement("div");
+    
     containerDiv.id =idx+"div"
+    containerDiv.appendChild(subjectInput)
     containerDiv.appendChild(gradeText);
     containerDiv.appendChild(gradeInput);
     containerDiv.appendChild(creditText);
@@ -56,12 +63,29 @@ function GetDatas(){
             inputs.push([jegy, credit])
         }        
     }
-    var kki = Calculate(inputs)
+
+    var sa = CalculateSA(inputs)
+    console.log("sa:",sa)
+    document.getElementById("sa").innerHTML=sa
+
+    var kki = CalculateKKI(inputs)
     console.log("kki:",kki)
     document.getElementById("kki").innerHTML=kki
+
+    var ki = CalculateKI(inputs)
+    console.log("ki:",ki)
+    document.getElementById("ki").innerHTML=ki
+
+    var ac = CalculateAllCredit(inputs)
+    console.log("ac:",ac)
+    document.getElementById("ac").innerHTML=ac
+
+    var cc = CalculateCompletedCredit(inputs)
+    console.log("cc:",cc)
+    document.getElementById("cc").innerHTML=cc
 }
 
-function Calculate(jegyek_kreditek){
+function CalculateKKI(jegyek_kreditek){
     var summaTeljesitetKreditXerdemjegy = 0
     var teljesitettKredit = 0
     var vallaltKredit = 0
@@ -88,4 +112,55 @@ function Calculate(jegyek_kreditek){
     console.log(elsotag,masodiktag)
     return (elsotag * masodiktag).toFixed(2);
 
+}
+function CalculateSA(jegyek_kreditek) {
+    var summaTeljesitetKreditXerdemjegy = 0
+    var vallaltKredit = 0
+    jegyek_kreditek.forEach(element => {
+        jegy = parseInt(element[0])
+        kredit = parseInt(element[1])
+        summaTeljesitetKreditXerdemjegy += jegy * kredit
+        vallaltKredit += kredit
+
+    });
+    return (summaTeljesitetKreditXerdemjegy / vallaltKredit).toFixed(2)
+}
+
+function CalculateAllCredit(jegyek_kreditek) {
+    var allCredit = 0
+    jegyek_kreditek.forEach(element => {
+        kredit = parseInt(element[1])
+        allCredit += kredit
+
+    });
+    return allCredit
+}
+
+function CalculateCompletedCredit(jegyek_kreditek) {
+    var teljesitettKredit = 0
+    jegyek_kreditek.forEach(element => {
+        jegy = parseInt(element[0])
+        kredit = parseInt(element[1])
+        if (jegy > 1){
+            teljesitettKredit += kredit
+        }
+
+    });
+    return teljesitettKredit
+}
+
+function CalculateKI(jegyek_kreditek) {
+    var summaTeljesitetKreditXerdemjegy = 0
+    var teljesitettKredit = 0
+    var vallaltKredit = 0
+
+
+    jegyek_kreditek.forEach(element => {
+        jegy = parseInt(element[0])
+        kredit = parseInt(element[1])
+        summaTeljesitetKreditXerdemjegy += jegy * kredit
+    });
+
+    elsotag = summaTeljesitetKreditXerdemjegy / 30
+    return (elsotag).toFixed(2);
 }
