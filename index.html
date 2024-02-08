@@ -12,13 +12,22 @@
             background-color: black;
             color: white;
             text-align: center;
+            font-family:'Courier New', Courier, monospace;
+        }
+        input{
+            width: 30px;
+        }
+        span{
+            color: red;
         }
     </style>
     <h1>KKI Calculator</h1><br>
-    <div id="main">
-        Érdemjegy: <input id ="0jegy" type="number"> Kredit: <input id="0credit" type="number"><button onclick="GenNewInput()">+</button>
+    <div id="main"></div><br>
+    <div id="results">
+        <button onclick="GetDatas()">Calculate</button>
+        <h3>KKI: <span id="kki">-</span></h3>
+
     </div>
     <br>
-    <button onclick="GetDatas()">Calculate</button>
 </body>
 </html>

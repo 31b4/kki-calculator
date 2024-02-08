@@ -1,16 +1,29 @@
 var idx = 0
+document.addEventListener('DOMContentLoaded', function() {
+    GenNewInput();
+    GenNewInput(); 
+    GenNewInput(); 
+    GenNewInput(); 
+});
+
+
+
 
 function GenNewInput(){
-    idx += 1
 
-    var gradeText = document.createTextNode("Érdemjegy: ");
+    var gradeText = document.createTextNode("Grade: ");
     var gradeInput = document.createElement("input");
     gradeInput.setAttribute("type", "number");
-    gradeInput.id = idx +"jegy"
+    gradeInput.value = 1
+    gradeInput.min = 1
+    gradeInput.max = 5
+    gradeInput.id = idx +"grade"
 
 
-    var creditText = document.createTextNode(" Kredit: ");
+    var creditText = document.createTextNode(" Credit: ");
     var creditInput = document.createElement("input");
+    creditInput.value = 1
+    creditInput.min = 1
     creditInput.setAttribute("type", "number");
     creditInput.id = idx +"credit"
 
@@ -18,6 +31,7 @@ function GenNewInput(){
 
     var addNewInput = document.createElement("button");
     addNewInput.innerHTML = "+";
+    addNewInput.id = "addnew"
     addNewInput.onclick = GenNewInput;
 
     // Create container div to hold the new elements
@@ -29,13 +43,14 @@ function GenNewInput(){
     containerDiv.appendChild(addNewInput);
 
     document.getElementById("main").appendChild(containerDiv)
+    idx += 1
 }
 
 
 function GetDatas(){
     inputs = []
-    for (let i = 0; i <= idx; i++) {
-        jegy = document.getElementById(i+"jegy").value
+    for (let i = 0; i < idx; i++) {
+        jegy = document.getElementById(i+"grade").value
         credit = document.getElementById(i+"credit").value
         if (jegy > 0 && credit > 0) {
             inputs.push([jegy, credit])
@@ -43,6 +58,7 @@ function GetDatas(){
     }
     var kki = Calculate(inputs)
     console.log("kki:",kki)
+    document.getElementById("kki").innerHTML=kki
 }
 
 function Calculate(jegyek_kreditek){
