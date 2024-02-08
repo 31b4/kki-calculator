@@ -20,11 +20,16 @@
         span{
             color: red;
         }
+        button{
+            margin-left: 10px;
+            min-width: 23.8px;
+            height: 21px;
+        }
     </style>
     <h1>KKI Calculator</h1><br>
     <div id="main"></div><br>
     <div id="results">
-        <button onclick="GetDatas()">Calculate</button>
+        <button onclick="removeInput()">-</button><button onclick="GenNewInput()">+</button><button onclick="GetDatas()">Calculate</button>
         <h3>KKI: <span id="kki">-</span></h3>
 
     </div>
