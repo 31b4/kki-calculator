@@ -7,10 +7,14 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
-
+function removeInput() {
+    document.getElementById(idx-1+"div").remove()
+    idx--
+}
 
 function GenNewInput(){
 
+    
     var gradeText = document.createTextNode("Grade: ");
     var gradeInput = document.createElement("input");
     gradeInput.setAttribute("type", "number");
@@ -29,18 +33,14 @@ function GenNewInput(){
 
 
 
-    var addNewInput = document.createElement("button");
-    addNewInput.innerHTML = "+";
-    addNewInput.id = "addnew"
-    addNewInput.onclick = GenNewInput;
 
     // Create container div to hold the new elements
     var containerDiv = document.createElement("div");
+    containerDiv.id =idx+"div"
     containerDiv.appendChild(gradeText);
     containerDiv.appendChild(gradeInput);
     containerDiv.appendChild(creditText);
     containerDiv.appendChild(creditInput);
-    containerDiv.appendChild(addNewInput);
 
     document.getElementById("main").appendChild(containerDiv)
     idx += 1
@@ -62,14 +62,14 @@ function GetDatas(){
 }
 
 function Calculate(jegyek_kreditek){
-    summaTeljesitetKreditXerdemjegy = 0
-    teljesitettKredit = 0
-    vallaltKredit = 0
+    var summaTeljesitetKreditXerdemjegy = 0
+    var teljesitettKredit = 0
+    var vallaltKredit = 0
 
 
     jegyek_kreditek.forEach(element => {
-        jegy = element[0]
-        kredit = element[1]
+        jegy = parseInt(element[0])
+        kredit = parseInt(element[1])
 
         summaTeljesitetKreditXerdemjegy += jegy * kredit
 
@@ -84,7 +84,8 @@ function Calculate(jegyek_kreditek){
 
     elsotag = summaTeljesitetKreditXerdemjegy / 30
     masodiktag = teljesitettKredit / vallaltKredit
-
+    console.log(teljesitettKredit,vallaltKredit)
+    console.log(elsotag,masodiktag)
     return (elsotag * masodiktag).toFixed(2);
 
 }
