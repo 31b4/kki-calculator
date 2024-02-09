@@ -95,9 +95,9 @@ function CalculateKKI(jegyek_kreditek){
         jegy = parseInt(element[0])
         kredit = parseInt(element[1])
 
-        summaTeljesitetKreditXerdemjegy += jegy * kredit
-
+        
         if (jegy > 1){
+            summaTeljesitetKreditXerdemjegy += jegy * kredit
             teljesitettKredit += kredit
         }
 
@@ -107,7 +107,8 @@ function CalculateKKI(jegyek_kreditek){
     });
 
     elsotag = summaTeljesitetKreditXerdemjegy / 30
-    masodiktag = teljesitettKredit / vallaltKredit
+    elsotag = (summaTeljesitetKreditXerdemjegy / 30)
+    masodiktag = (teljesitettKredit / vallaltKredit)
     console.log(teljesitettKredit,vallaltKredit)
     console.log(elsotag,masodiktag)
     return (elsotag * masodiktag).toFixed(2);
@@ -115,15 +116,17 @@ function CalculateKKI(jegyek_kreditek){
 }
 function CalculateSA(jegyek_kreditek) {
     var summaTeljesitetKreditXerdemjegy = 0
-    var vallaltKredit = 0
+    var teljesitettKredit = 0
     jegyek_kreditek.forEach(element => {
         jegy = parseInt(element[0])
         kredit = parseInt(element[1])
-        summaTeljesitetKreditXerdemjegy += jegy * kredit
-        vallaltKredit += kredit
+        if (jegy > 1){
+            summaTeljesitetKreditXerdemjegy += jegy * kredit
+            teljesitettKredit += kredit
+        }
 
     });
-    return (summaTeljesitetKreditXerdemjegy / vallaltKredit).toFixed(2)
+    return (summaTeljesitetKreditXerdemjegy / teljesitettKredit).toFixed(2)
 }
 
 function CalculateAllCredit(jegyek_kreditek) {
@@ -154,7 +157,9 @@ function CalculateKI(jegyek_kreditek) {
     jegyek_kreditek.forEach(element => {
         jegy = parseInt(element[0])
         kredit = parseInt(element[1])
-        summaTeljesitetKreditXerdemjegy += jegy * kredit
+        if (jegy > 1){
+            summaTeljesitetKreditXerdemjegy += jegy * kredit
+        }
     });
 
     elsotag = summaTeljesitetKreditXerdemjegy / 30
