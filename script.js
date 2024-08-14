@@ -16,9 +16,18 @@ function removeInput() {
 
 function GenNewInput(){
 
-    //var subjectInput = document.createElement("input");
+    var subjectInput = document.createElement("input");
     //subjectInput.value = "Subject "+idx
 
+
+
+    
+    var creditText = document.createTextNode(" Credit: ");
+    var creditInput = document.createElement("input");
+    creditInput.value = 1
+    creditInput.min = 1
+    creditInput.setAttribute("type", "number");
+    creditInput.id = idx +"credit"
 
     var gradeText = document.createTextNode(" Grade: ");
     var gradeInput = document.createElement("input");
@@ -29,13 +38,6 @@ function GenNewInput(){
     gradeInput.id = idx +"grade"
 
 
-    var creditText = document.createTextNode(" Credit: ");
-    var creditInput = document.createElement("input");
-    creditInput.value = 1
-    creditInput.min = 1
-    creditInput.setAttribute("type", "number");
-    creditInput.id = idx +"credit"
-
 
 
 
@@ -43,11 +45,11 @@ function GenNewInput(){
     var containerDiv = document.createElement("div");
     
     containerDiv.id =idx+"div"
-    //containerDiv.appendChild(subjectInput)
-    containerDiv.appendChild(gradeText);
-    containerDiv.appendChild(gradeInput);
+    containerDiv.appendChild(subjectInput)
     containerDiv.appendChild(creditText);
     containerDiv.appendChild(creditInput);
+    containerDiv.appendChild(gradeText);
+    containerDiv.appendChild(gradeInput);
 
     document.getElementById("main").appendChild(containerDiv)
     idx += 1
