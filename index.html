@@ -5,67 +5,70 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KKI Calculator</title>
     <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
     <link rel="icon" 
     type="image/png" 
-    href="/assets/nem_allampolgar.jpg"> 
+    href="/assets/icon.png"> 
 </head>
-<body>
-    <style>
-        body{
-            background-color: black;
-            color: white;
-            text-align: center;
-            font-family:'Courier New', Courier, monospace;
-            font-size: 26px;
-        }
-        input[type="number"]{
-            width: 40px;
-            font-size: 16px; /* Set the font size */
-            padding: 5px; /* Add padding to the input field */
-            border: 2px solid #ccc; /* Add a border */
-            border-radius: 5px; /* Add border radius for rounded corners */
-            box-sizing: border-box;
-        }
-        input, button{
-            width: auto;
-            font-size: 20px; /* Set the font size */
-            padding: 5px; /* Add padding to the input field */
-            border: 2px solid #ccc; /* Add a border */
-            border-radius: 5px; /* Add border radius for rounded corners */
-            box-sizing: border-box;
-        }
-        input:focus {
-            outline: none; /* Remove the default focus outline */
-            border-color: #ff0000; /* Change the border color when the input is focused */
-        }
-        span{
-            color: red;
-        }
-        button{
-            margin-left: 10px;
-            min-width: 23.8px;
-            height: 35px;
-        }
-        div{
-            margin: 7px;
-        }
 
-    </style>
-    <h1>KKI Calculator</h1><br>
-    <duet-number-input value="1" min="1" max="5" step="1" unit="">
-    </duet-number-input>
-    <div id="main"></div><br>
-    <div id="results">
-        <button onclick="removeInput()">-</button><button onclick="GenNewInput()">+</button><button onclick="GetDatas()">Calculate</button>
-        <h3>Súlyozott átlag: <span id="sa">-</span></h3>
-        <h3>KKI: <span id="kki">-</span></h3>
-        <h3>KI: <span id="ki">-</span></h3>
-        <h3>Felvett credit: <span id="ac">-</span></h3>
-        <h3>Teljesített credit: <span id="cc">-</span></h3>
-
-
+    
+    <div class="header">
+        <div class="left"><a target="_blank" href="https://31b4.com">31b4</a></div>
+        <div class="title">KKI Calculator</div>
+        <div class="right"><a target="_blank" href="https://univerx.hu">UniverX</a></div>
     </div>
-    <img style="width: 1px;" src="assets/nem_allampolgar.jpg" alt="">
+
+
+    <div id="content">
+        <div id="main">
+            <div class="widgetHeader">
+                <div id="targyaidTitle">Tárgyaid</div>
+                <div id="creditTitle">Credit</div>
+                <div id="jegyTitle">Jegy</div>
+            </div>
+
+        </div>
+        
+        <div id="buttons">
+            <button class="addremoveButton" onclick="removeInput()">-</button>
+            <button class="addremoveButton" onclick="GenNewInput()">+</button>
+            <button id="calculateButton" onclick="GetDatas()">Calculate</button>
+        </div>
+
+        <h2>Eredmények</h2>
+        <div id="results">
+            <div class="resultRow">
+                <div class="resultWidget">
+                    <h3>KKI</h3>
+                    <span id="kki">-</span>
+                </div>
+                <div class="resultWidget">
+                    <h3>KI</h3>
+                    <span id="ki">-</span>
+                </div>
+            </div>
+        
+            <div class="resultWidgetWide">
+                <div class="subWidget">
+                    <h3>Felvett</h3>
+                    <span id="ac">-</span>
+                </div>
+                <div class="subWidget">
+                    <h3>Teljesített</h3>
+                    <span id="cc">-</span>
+                </div>
+            </div>
+            
+            <div class="resultWidget">
+                <h3>Átlag</h3>
+                <span id="avg">-</span>
+            </div>
+        </div>
+        
+    </div>
+
+
+    <img style="width: 1px;" src="assets/embed.png" alt="">
 
     <br>
 </body>

@@ -17,25 +17,28 @@ function removeInput() {
 function GenNewInput(){
 
     var subjectInput = document.createElement("input");
-    //subjectInput.value = "Subject "+idx
+    subjectInput.className = "subjectInput"
+    subjectInput.placeholder = "Tárgy neve"
+
 
 
 
     
-    var creditText = document.createTextNode(" Credit: ");
     var creditInput = document.createElement("input");
-    creditInput.value = 1
-    creditInput.min = 1
     creditInput.setAttribute("type", "number");
+    creditInput.value = 1
+    creditInput.min = 0
     creditInput.id = idx +"credit"
+    creditInput.className = "numberInput"
 
-    var gradeText = document.createTextNode(" Grade: ");
     var gradeInput = document.createElement("input");
     gradeInput.setAttribute("type", "number");
     gradeInput.value = 1
     gradeInput.min = 1
     gradeInput.max = 5
     gradeInput.id = idx +"grade"
+    gradeInput.className = "numberInput"
+
 
 
 
@@ -43,12 +46,10 @@ function GenNewInput(){
 
     // Create container div to hold the new elements
     var containerDiv = document.createElement("div");
-    
+    containerDiv.className = "classContainer";
     containerDiv.id =idx+"div"
     containerDiv.appendChild(subjectInput)
-    containerDiv.appendChild(creditText);
     containerDiv.appendChild(creditInput);
-    containerDiv.appendChild(gradeText);
     containerDiv.appendChild(gradeInput);
 
     document.getElementById("main").appendChild(containerDiv)
@@ -68,7 +69,7 @@ function GetDatas(){
 
     var sa = CalculateSA(inputs)
     console.log("sa:",sa)
-    document.getElementById("sa").innerHTML=sa
+    document.getElementById("avg").innerHTML=sa
 
     var kki = CalculateKKI(inputs)
     console.log("kki:",kki)
