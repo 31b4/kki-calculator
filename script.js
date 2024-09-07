@@ -177,20 +177,21 @@ function submitICSData() {
 
 
 function fetchICSCalendar(url) {
-    fetch(url) 
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.text();
-        })
-        .then(data => {
-            console.log(data);
-        })
-        .catch(error => {
-            console.error('There was a problem fetching the .ics file:', error);
-        });
+    fetch(url, {
+        mode: 'no-cors'
+    })
+    .then(response => {
+        console.log(response); // Opaque response, not usable
+    })
+    .catch(error => console.error(error));
+    
 }
+/*
+<div id="ics">
+    <input type="text" id="icsInput" class="subjectInput" placeholder="Órarend link">
+    <button class="calculateButton" id="submitICS" onclick="submitICSData()">Submit</button>
+</div>
+*/
 
 
 
