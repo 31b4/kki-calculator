@@ -21,6 +21,12 @@
 
     <div id="content">
         <div id="main">
+            <div id="ics">
+                <input type="text" id="icsInput" class="subjectInput" placeholder="Órarend link">
+                <button class="calculateButton" id="submitICS" onclick="submitICSData()">Submit</button>
+            </div>
+            
+
             <div class="widgetHeader">
                 <div id="targyaidTitle">Tárgyaid</div>
                 <div id="creditTitle">Credit</div>
@@ -32,7 +38,7 @@
         <div id="buttons">
             <button class="addremoveButton" onclick="removeInput()">-</button>
             <button class="addremoveButton" onclick="GenNewInput()">+</button>
-            <button id="calculateButton" onclick="GetDatas()">Calculate</button>
+            <button class="calculateButton" onclick="GetDatas()">Calculate</button>
         </div>
 
         <h2>Eredmények</h2>

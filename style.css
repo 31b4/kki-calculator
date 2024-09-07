@@ -117,7 +117,7 @@ a:hover {
     align-items: center;
     margin-top: 10px;
 }
-#calculateButton {
+.calculateButton {
     height: 50px;
     width: 170px;
     background-color: #263346;
@@ -216,4 +216,22 @@ h2 {
 /* Inner styling for wide widget */
 .resultWidgetWide .subWidget {
     text-align: center;
+}
+
+
+/*-----------------------------------------------*/
+
+#ics {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+#icsInput{
+    height: 42px;
+    text-align: center;
+    border-width: 3px;
+    border-color: whitesmoke;
+    border-style: solid;
+    font-size: 20px;
 }

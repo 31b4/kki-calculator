@@ -168,3 +168,36 @@ function CalculateKI(jegyek_kreditek) {
     elsotag = summaTeljesitetKreditXerdemjegy / 30
     return (elsotag).toFixed(2);
 }
+
+//-----------------------------ICS-------------------------------
+function submitICSData() {
+    let inputValue = document.getElementById("icsInput").value;
+    fetchICSCalendar(inputValue);
+}
+
+
+function fetchICSCalendar(url) {
+    fetch(url) 
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.text();
+        })
+        .then(data => {
+            console.log(data);
+        })
+        .catch(error => {
+            console.error('There was a problem fetching the .ics file:', error);
+        });
+}
+
+
+
+
+
+
+
+
+
+
