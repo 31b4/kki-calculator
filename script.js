@@ -25,19 +25,23 @@ function GenNewInput(){
 
     
     var creditInput = document.createElement("input");
-    creditInput.setAttribute("type", "number");
-    creditInput.value = 1
+    creditInput.setAttribute("type", "tel");
+    creditInput.value = null
     creditInput.min = 0
     creditInput.id = idx +"credit"
     creditInput.className = "numberInput"
+    creditInput.placeholder = '0'
 
     var gradeInput = document.createElement("input");
-    gradeInput.setAttribute("type", "number");
-    gradeInput.value = 1
+    gradeInput.setAttribute("type", "tel");
+    gradeInput.value = null
     gradeInput.min = 1
     gradeInput.max = 5
     gradeInput.id = idx +"grade"
     gradeInput.className = "numberInput"
+    gradeInput.placeholder = '1'
+    
+
 
 
 
